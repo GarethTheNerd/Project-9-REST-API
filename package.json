@@ -17,10 +17,10 @@
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.2",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "promise.prototype.finally": "^3.1.0",
+    "promise.prototype.finally": "^3.1.2",
     "sequelize": "^6.3.4",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^5.0.0"
   }
 }
