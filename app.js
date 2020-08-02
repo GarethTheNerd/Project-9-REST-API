@@ -16,7 +16,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-// TODO setup your api routes here
+// /api routes are handled by routes/api.js
 app.use('/api', apiRoutes);
 
 // send 404 if no other route matched
@@ -32,7 +32,8 @@ app.use((err, req, res, next) => {
     console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
   }
 
-  if(err.name === "SequelizeValidationError") {
+  //This is used to ensure the correct status is thrown. By default, these validation errors would throw 500
+  if(err.name === "SequelizeValidationError" || "SequelizeUniqueConstraintError") {
     err.status = 400
   }
 

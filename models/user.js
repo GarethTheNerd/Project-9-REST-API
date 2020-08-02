@@ -38,13 +38,14 @@ module.exports = (sequelize) => {
         emailAddress: {
             type: Sequelize.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 notEmpty: {
                     msg: "Email address is required"
                 },
                 notNull: {
                     msg: "Email address is required"
-                }
+                }                
             }
         },
         password: {
