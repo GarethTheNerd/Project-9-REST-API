@@ -3,24 +3,21 @@
 // load modules
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
+
+const apiRoutes = require('./routes/api');
 
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
 
 // create the Express app
 const app = express();
-
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 
 // TODO setup your api routes here
-
-// setup a friendly greeting for the root route
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Welcome to the REST API project!',
-  });
-});
+app.use('/api', apiRoutes);
 
 // send 404 if no other route matched
 app.use((req, res) => {
@@ -33,6 +30,10 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   if (enableGlobalErrorLogging) {
     console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
+  }
+
+  if(err.name === "SequelizeValidationError") {
+    err.status = 400
   }
 
   res.status(err.status || 500).json({
