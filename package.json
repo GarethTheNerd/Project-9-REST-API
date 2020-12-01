@@ -16,7 +16,7 @@
   "dependencies": {
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "promise.prototype.finally": "^3.1.2",
