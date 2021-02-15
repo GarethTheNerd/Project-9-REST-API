@@ -21,6 +21,6 @@
     "morgan": "^1.10.0",
     "promise.prototype.finally": "^3.1.2",
     "sequelize": "^6.5.0",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.2"
   }
 }
